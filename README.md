@@ -1,2 +1,2 @@
 # docker
-docker project
+Getting started with docker project
