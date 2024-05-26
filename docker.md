@@ -78,7 +78,9 @@ export FORMAT="ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports
 ```
 docker ps --format=$FORMAT
 ```
+This command sets the environment variable FORMAT with the specified format string for formatting Docker container information.
 
 N/: You should run the above command in a bash terminal because `'FORMAT is a bash syntax'`. 
 if you are in a windows terminal (powershell), you should use `set` instead of `format` to define environment variable.
 ![image](./screenshots/dockerpsformated.png)
+
