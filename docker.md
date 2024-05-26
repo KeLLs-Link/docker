@@ -84,3 +84,14 @@ N/: You should run the above command in a bash terminal because `'FORMAT is a ba
 if you are in a windows terminal (powershell), you should use `set` instead of `format` to define environment variable.
 ![image](./screenshots/dockerpsformated.png)
 
+
+## Docker Volumes 
+Docker volumes allows us to share data. this could be files & folders. You can create a volume through the container and file system.
+
+- Volumes allows us to share data between host and containers.
+
+- Volumes also allows us to share data between containers.
+
+The way it works is that; say you have a container running on a host. so you need to create a volume which allows you to share data between the host and container and vice-versa.
+
+Let's say we add a file in our host machine, this file will also appear in the actual container inside of the volume. Also if you add  a file in the actual volume inside of the container, this will appear in our host operating system. Same  thing applies with folders.
