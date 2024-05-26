@@ -1,4 +1,5 @@
 ## Managing Containers
+___
 
 You cannot remove or delete a running container. But however, you can use this command to force remove a running container. By introducing the -f flag
 
@@ -27,6 +28,7 @@ localhost no longer accessible after image has been force-stopped.
 ![image](./screenshots/nginxnotaccessible.png)
 
 ## Naming Containers
+___
 Let's begin by pulling an image and running a container.
 
 ```
@@ -54,6 +56,8 @@ It is a best practice reccomendation that you always name your containers becaus
 
 
 ## Docker Ps
+___
+
 Sometimes it might be difficut to understand the output of docker ps (PORT, STATUS, CONTAINER ID, IMAGE, etc.) because the lenght might overlap each other which makes it dificult to read. 
 
 let's go ahead and run another container.
@@ -86,6 +90,7 @@ if you are in a windows terminal (powershell), you should use `set` instead of `
 
 
 ## Docker Volumes 
+___
 Docker volumes allows us to share data. this could be files & folders. You can create a volume through the container and file system.
 
 - Volumes allows us to share data between host and containers.
@@ -95,3 +100,28 @@ Docker volumes allows us to share data. this could be files & folders. You can c
 The way it works is that; say you have a container running on a host. so you need to create a volume which allows you to share data between the host and container and vice-versa.
 
 Let's say we add a file in our host machine, this file will also appear in the actual container inside of the volume. Also if you add  a file in the actual volume inside of the container, this will appear in our host operating system. Same  thing applies with folders.
+
+## Sharing Data between Host and Container 
+___
+
+Go to 
+```
+https://hub.docker.com
+```
+- ***The objective is to understand how we can serve our own files during development, with nginx***
+
+search for nginx
+
+```
+docker run --name website -d -p 8080 nginx
+```
+![image](./screenshots/newnginx.png)
+
+We'll now have to overite this nginx default webpage by simply mounting a volume from the **`host`** to the **`container`**
+
+## Volumes Between Host and Containers
+___
+
+![image](./screenshots/amigos.png)
+
+
