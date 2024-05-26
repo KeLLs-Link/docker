@@ -54,3 +54,17 @@ It is a best practice reccomendation that you always name your containers becaus
 
 
 ## Docker Ps
+Sometimes it might be difficut to understand the output of docker ps (PORT, STATUS, CONTAINER ID, IMAGE, etc.) because the lenght might overlap each other which makes it dificult to read. 
+
+let's go ahead and run another container.
+```
+docker run --name my-second-website -d -p 9000:80 nginx:latest
+```
+![image](./screenshots/mysecondcontainer.png)
+
+In order to format the above `docker ps` output and make it more readable, we use the line of code below.
+
+```
+docker ps --format="ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
+```
+![image](./screenshots/docker-ps-formating.png)
