@@ -47,3 +47,10 @@ command.
 docker run --name mywebsite -d -p 3000:80 -p 8080:80 nginx:latest
 ```
 ![image](./screenshots/container-remamed-to-my-website.png)
+
+It is a best practice reccomendation that you always name your containers because you will most likely be running multiple containers at the same time.
+
+![image](./screenshots/remanedcontainer.png)
+
+
+## Docker Ps
