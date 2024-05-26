@@ -33,3 +33,17 @@ Let's begin by pulling an image and running a container.
 docker run -d -p 3000:80 -p 8080:80 nginx:latest
 ```
 ![image](./screenshots/dockerrun.png)
+
+When you create a container, a name is randomly given to that contianer. but in reality, you need to give your container a definitive name so you do not need to rely on the container ID or the name that is randomly given when you created the container.
+
+so the way you give your container a name is by using the 
+
+```
+docker run --name 
+```
+command.
+
+```
+docker run --name mywebsite -d -p 3000:80 -p 8080:80 nginx:latest
+```
+![image](./screenshots/container-remamed-to-my-website.png)
