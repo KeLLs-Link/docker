@@ -22,6 +22,14 @@ So, docker ps -aq will list the IDs of all containers, whether they are running 
 
 ![image](./screenshots/nginximage.png)
 
-localhost no longer accessible after image has been forced stoped. 
+localhost no longer accessible after image has been force-stopped. 
 
 ![image](./screenshots/nginxnotaccessible.png)
+
+## Naming Containers
+Let's begin by pulling an image and running a container.
+
+```
+docker run -d -p 3000:80 -p 8080:80 nginx:latest
+```
+![image](./screenshots/dockerrun.png)
