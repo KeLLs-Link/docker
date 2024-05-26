@@ -68,3 +68,17 @@ In order to format the above `docker ps` output and make it more readable, we us
 docker ps --format="ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
 ```
 ![image](./screenshots/docker-ps-formating.png)
+The above `docker ps` output is more readable.
+
+We can now export the `docker ps format` syntax above into a variable (FORMAT), so we can use it anytime in do display a well formated and readable list of running containers.
+
+```
+export FORMAT="ID\t{{.ID}}\nNAME\t{{.Names}}\nImage\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
+```
+```
+docker ps --format=$FORMAT
+```
+
+N/: You should run the above command in a bash terminal because `'FORMAT is a bash syntax'`. 
+if you are in a windows terminal (powershell), you should use `set` instead of `format` to define environment variable.
+![image](./screenshots/dockerpsformated.png)
