@@ -19,3 +19,9 @@ So, docker ps -aq will list the IDs of all containers, whether they are running 
 **`-f:`** This flag forces the removal of a running container. ***(it's generally safer to stop a container before removing it, but -f bypasses that).***
 
 ![image](./screenshots/containerforcedshutdown.png)
+
+![image](./screenshots/nginximage.png)
+
+localhost no longer accessible after image has been forced stoped. 
+
+![image](./screenshots/nginxnotaccessible.png)
