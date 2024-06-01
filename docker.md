@@ -57,6 +57,15 @@ It is a best practice reccomendation that you always name your containers becaus
 
 ## Docker Ps
 ___
+```
+docker ps
+```
+the above command shows you the list of running containers.
+
+```
+docker ps -a
+```
+the above command shows you the list of stopped containers.
 
 Sometimes it might be difficut to understand the output of docker ps (PORT, STATUS, CONTAINER ID, IMAGE, etc.) because the lenght might overlap each other which makes it dificult to read. 
 
@@ -123,5 +132,53 @@ We'll now have to overite this nginx default webpage by simply mounting a volume
 ___
 
 ![image](./screenshots/amigos.png)
+Inside our desktop (host machine), we will create a folder called website, and we'll have an index.html file in that website. so that the content of the folder (file) will be shared inside of the container: /usr/share/nginx/html In that way, when we hit our URL in the web browser, we will be served with our own HTML file.
 
+Now we have to start a container and mount our website folder to our container.
+
+![image](./screenshots/websitefolder.png)
+
+```
+docker run --name website -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx
+```
+```
+-v $(pwd):/usr/share/nginx/html:ro
+```
+The above command mounts the current directory ($(pwd)) into the container at the path `/usr/share/nginx/html:ro`, with read-only `ro` permissions 
+
+**`The above command is typically used to serve static files from the host machine to the Nginx server running inside the container. So, in summary, this command creates a Docker container named "website" running Nginx, serving files from the current directory on the host machine, and exposes it on port 8080`**.
+![image](./screenshots/volumemount.png)
+
+if we have a file in our container, that will also appear in our host machine.
+```
+docker exec -it website bash
+```
+The command above **`docker exec -it website bash`** allows you to execute an interactive shell session within a running Docker container named "website". (getting inside the container shell to view or make some custome changes.)
+
+`docker exec`: This is the command used to execute a command inside a running Docker container.
+
+`-it`: These are flags used together to run the command interactively in the container's terminal. 
+
+`-i`
+ stands for interactive, and `-t` allocates a pseudo-TTY (terminal).
+
+`website:` This is the name of the container where you want to execute the command (this can always be changed to the name of the container).
+
+`bash`: This is the command to be executed inside the container. In this case, it's launching the Bash shell, a common command-line interface in Unix-like operating systems.
+
+## Customize Website
+
+Navigate to google and do a search on bootstrap single page template.
+
+click on any of the website template and click on view on github.
+
+![image](./screenshots/bootstrap.png)
+
+![image](./screenshots/cloned.png)
+
+After the download is complete, copy everything in the bootstrap folder and paste in the website folder you created earlier.
+
+![image](./screenshots/bootstrapcopiedtowebsite.png)
+
+Go back to the url and refresh the localhost. you should see the updated website content
 
