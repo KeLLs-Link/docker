@@ -182,3 +182,20 @@ After the download is complete, copy everything in the bootstrap folder and past
 
 Go back to the url and refresh the localhost. you should see the updated website content
 
+## Sharing Volumes between Containers
+![image](./screenshots/volumesonvolumes.png)
+
+Say we have container `A` and container `B`, we can share a volume between them. We can share the content of a folder or file between these two containers.
+
+The way we can share files and folders between containers is by using a command
+
+```
+docker run --help
+```
+the above command will give you list of commands you can use with docker run.
+
+```
+docker run --name website-copy --volumes-from website -d -p 8081:80 nginx
+```
+
+`--volumes-from website`: This option mounts volumes from the container named "website" into the new container. This means that any volumes mounted in the "website" container will also be mounted in the "website-copy" container. So, overall, this command creates a new Docker container named "website-copy", using the Nginx image, and mounts volumes from the existing "website" container into it. The Nginx server running inside the "website-copy" container will be accessible on port 8081 of your host machine.
