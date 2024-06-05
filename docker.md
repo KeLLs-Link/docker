@@ -208,6 +208,8 @@ So far, we have been using existing images (the nginx image).
 
 ## Creating a dockerfile and creating a docker image from the dockerfile.
 
+A Dockerfile is a text file or document that contains all the commands/instructions a user would use to assemble or build a container image.
+
 - building an image from dockerfile and running multiple containers from our custom built image
 
 When you want to build a custom image, you do not need to mount a volume from your host to the actual container. the image you are building contains everything.
@@ -222,7 +224,7 @@ docker image ls --format=$FORMAT
 ```
 ***Recall; we do not need to mount a volume anymore when we are building our own image- the image contianes eveything.***
 
-Remember our Image shhould contain everything inwhich our application needs to run- OS, application code, dependencies, etc.
+Remember our Image should contain everything inwhich our application needs to run- OS, application code, dependencies, etc.
 
 - **Open up** 
 ```
@@ -242,4 +244,38 @@ N/B: ensure that the dockerfile is created inside of the root folder (website fo
  
  Usually when you build your own image, you will never build an image from scratch. you will always use an existing image as your base image and produce your own image from there. In our case we will build our own image from off the latest nginx image.
 
- - The secondcommand we are going to learn when building a docker image is the **`ADD`** keyword. which adds everything in the current directory 
+ - The secondcommand we are going to learn when building a docker image is the **`ADD`** keyword. which adds everything in the current directory (website directory in this case) 
+```
+ADD . /usr/share/nginx/html
+``` 
+this is the destination where static content should live if you want to share static contents with nginx
+
+![image](./screenshots/dockerfilee.png)
+
+This is a simple dockerfile that will produce an image.
+```
+FROM nginx:latest
+ADD . /usr/share/nginx/html
+```
+
+Now we have a docker file, let's go ahead and see how we can build an image from this dockerfile.
+
+- **Builidng Images from Dockerfile**
+
+Open up your terminal or command line if you are on windows. make sure sure you are in the root or website directory. 
+
+![image](./screenshots/dockerfile3.png)
+
+We build docker images from dockerfile by running the following command. and specifying certain parameters such as tagging. basically, the tag is a unique identifier or discription you give to your built docker image.
+
+![image](./screenshots/tag.png)
+when tagging, the desription by the left before the colon is name. what follows after the colon is the version. example. ***website:latest***
+```
+docker build --tag website:latest .
+```
+the next thing you have to specify is the location (directory) of your dockerfile. this is represented by a dot (.) the dot will look for the the docker file and then build an image from it.
+
+the --help will show you a list of commands that you can use when building from a dockerfile
+```
+docker build --help
+```
