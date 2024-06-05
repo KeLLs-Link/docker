@@ -199,3 +199,39 @@ docker run --name website-copy --volumes-from website -d -p 8081:80 nginx
 ```
 
 `--volumes-from website`: This option mounts volumes from the container named "website" into the new container. This means that any volumes mounted in the "website" container will also be mounted in the "website-copy" container. So, overall, this command creates a new Docker container named "website-copy", using the Nginx image, and mounts volumes from the existing "website" container into it. The Nginx server running inside the "website-copy" container will be accessible on port 8081 of your host machine.
+
+
+## Dockerfile
+So far, we have been using existing images (the nginx image). 
+
+**`Dockerfile`** allows us to create our own images by creating a file called dockerfile. This dockerfile simply consist a list of steps on how to create images. and then we can run images built from dockerfiles as we've been running existing images we pulled from docker-hub.
+
+## Creating a dockerfile and creating a docker image from the dockerfile.
+
+- building an image from dockerfile and running multiple containers from our custom built image
+
+When you want to build a custom image, you do not need to mount a volume from your host to the actual container. the image you are building contains everything.
+
+```
+docker image ls
+```
+the above command is used to list the available docker image. we can also use the format option along with the ls command to format the ouput of the docker image ls command. As shown bellow.
+
+```
+docker image ls --format=$FORMAT
+```
+***Recall; we do not need to mount a volume anymore when we are building our own image- the image contianes eveything.***
+
+Remember our Image shhould contain everything inwhich our application needs to run- OS, application code, dependencies, etc.
+
+- **Open up** 
+```
+VS Code or any IDE of your choice
+```
+
+Open up the website folder.
+inside of the website folder, create a file called a `dockerfile`
+
+![image](./screenshots/dockerfile.png)
+
+N/B: ensure that the dockerfile is created inside of the root folder (website folder.)
