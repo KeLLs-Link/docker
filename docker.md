@@ -235,3 +235,11 @@ inside of the website folder, create a file called a `dockerfile`
 ![image](./screenshots/dockerfile.png)
 
 N/B: ensure that the dockerfile is created inside of the root folder (website folder.)
+
+- The first command we are going to learn when building a docker image is the **`FROM`** keyword
+
+**`FROM`**: the from keyword depicts the name of the base image we want to build our image from.
+ 
+ Usually when you build your own image, you will never build an image from scratch. you will always use an existing image as your base image and produce your own image from there. In our case we will build our own image from off the latest nginx image.
+
+ - The secondcommand we are going to learn when building a docker image is the **`ADD`** keyword. which adds everything in the current directory 
