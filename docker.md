@@ -270,6 +270,8 @@ We build docker images from dockerfile by running the following command. and spe
 
 ![image](./screenshots/tag.png)
 when tagging, the desription by the left before the colon is name. what follows after the colon is the version. example. ***website:latest***
+
+press ctrl + s to save the dockerfile before building the image
 ```
 docker build --tag website:latest .
 ```
@@ -279,3 +281,5 @@ the --help will show you a list of commands that you can use when building from 
 ```
 docker build --help
 ```
+
+![image](./screenshots/firstdockerimage.png)
