@@ -124,6 +124,10 @@ search for nginx
 ```
 docker run --name website -d -p 8080 nginx
 ```
+```
+8080:80 means 8080 local host port to port 80 which is the container port.
+```
+
 ![image](./screenshots/newnginx.png)
 
 We'll now have to overite this nginx default webpage by simply mounting a volume from the **`host`** to the **`container`**
@@ -283,3 +287,28 @@ docker build --help
 ```
 
 ![image](./screenshots/firstdockerimage.png)
+
+```
+ADD . /usr/share/nginx/html  
+```
+the above command adds everyhting in the current directory `(ADD .)` to the destination `(usr/share/nginx/html)` inside our container.
+
+![image](./screenshots/builtimage.png)
+
+Let's build a container off the image (website) we just created. 
+
+![image](./screenshots/image%20built.png)
+
+***A crucial part of running your own container from your custom built image is that you are not mounting any volume. This image containes everything that our container needs to run.***
+
+***So we've been able to create a dockerfile, built an image from the dockerfile, then run a contianer from the image***
+
+## A bit more about Dockerfiles
+- Nodejs and Express
+
+Let's go ahead and switch context and build an API using Nodejs. 
+
+Install Nodejs
+Go ahead to Nodejs.org and download either the recommended version or the one that contains the latest version. Once we have nodejs installed, we will be using the express framework. Express allows us to build API's and web applications 
+
+![image](./screenshots/nodjs.png)
